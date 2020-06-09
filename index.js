@@ -150,7 +150,10 @@ console.log(mortgageCal5(200000, 0.05, 30, 750));
 
 
 // 🏡 Task 6: Loops
-/* Write a new function called variableInterestRate. This function should be the same as mortgageCalculator, except it should console.log the monthly payment for 10 different interest rates at 0.5% increments plus or minus 2% from the inputted interest rate. Complete these calculations using a for loop.
+/* Write a new function called variableInterestRate. 
+This function should be the same as mortgageCalculator, 
+except it should console.log the monthly payment for 10 different interest rates at 0.5% increments plus 
+or minus 2% from the inputted interest rate. Complete these calculations using a for loop.
 
 For example, variableInterestRate(200000, 0.04, 30) should console.log:
 
@@ -165,6 +168,22 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
+let variableInterestRate = function (P, I, N) {
+    for (let z = 0; z < 10; z++) {
+        let name = "Joe";
+        let periods = N * 12;
+        let monthlyInterestRate = I *(1+ z * 0.05)/ 12;
+        let n1 = Math.pow((1 + monthlyInterestRate), periods);
+        let n2 = n1 * monthlyInterestRate;
+        let numerator = n2;
+        let denominator = n1 - 1;
+        let monthlyRate = P * ( numerator / denominator);
+        monthlyRate = Math.round(monthlyRate*100)/100;
+        console.log(name +`, with an interest rata of `+ Math.round(I *(1+ z * 0.05)*1000)/1000 +` your monthly rate is ` + monthlyRate);
+    };
+}
+
+console.log(variableInterestRate(200000, 0.04, 30));
 
 
 
