@@ -101,14 +101,52 @@ console.log(mortgageCal(200000, 0.05, 30));
 
 
 // 🏡 Task 5: Conditionals
-/* Add another paramter to your function called credit score. This parameter will be a number between 0 and 800 (a credit score).
+/* Add another paramter to your function called credit score. 
+This parameter will be a number between 0 and 800 (a credit score).
 
-Then, add control flow within your function such that IF creditScore is above 740, interest rate drops by 0.5%, if credit score is below 660, interest rate increases by 0.5% and if credit score is anywhere between 660 and 740 interest rate doesn't change.
+Then, add control flow within your function such that IF creditScore is above 740, interest rate drops by 0.5%, 
+if credit score is below 660, interest rate increases by 0.5% and if credit score is anywhere between 660 and 740 interest rate doesn't change.
 
-Hint: To drop an interest rate by 5% you can take monthlyRate and multiply it by 0.95. Similarly, to increase an interest rate by 5% you'd do monthlyRate * 1.05. 
+Hint: To drop an interest rate by 5% you can take monthlyRate and multiply it by 0.95. 
+Similarly, to increase an interest rate by 5% you'd do monthlyRate * 1.05. 
 */
 
 
+let mortgageCal5 = function(P, I, N, creditScore) {
+    let periods = N * 12;
+    let monthlyInterestRate = I /12;
+    if (creditScore > 740) {
+        monthlyInterestRate = monthlyInterestRate * 0.95;
+        let n1 = Math.pow((1 + monthlyInterestRate), periods);
+        let n2 = n1 * monthlyInterestRate;
+        let numerator = n2;
+        let denominator = n1 - 1;
+        let monthlyRate = P * ( numerator / denominator);
+        monthlyRate = Math.round(monthlyRate*100)/100;
+        return(monthlyRate);
+    }else if (creditScore <= 740 && creditScore >=660) {
+        let n1 = Math.pow((1 + monthlyInterestRate), periods);
+        let n2 = n1 * monthlyInterestRate;
+        let numerator = n2;
+        let denominator = n1 - 1;
+        let monthlyRate = P * ( numerator / denominator);
+        monthlyRate = Math.round(monthlyRate*100)/100;
+        return(monthlyRate);
+    }else if (creditScore < 660) {
+        monthlyInterestRate = monthlyInterestRate * 1.05;
+        let n1 = Math.pow((1 + monthlyInterestRate), periods);
+        let n2 = n1 * monthlyInterestRate;
+        let numerator = n2;
+        let denominator = n1 - 1;
+        let monthlyRate = P * ( numerator / denominator);
+        monthlyRate = Math.round(monthlyRate*100)/100;
+        return(monthlyRate);
+    }
+};
+
+console.log(mortgageCal5(200000, 0.05, 30, 560));
+console.log(mortgageCal5(200000, 0.05, 30, 660));
+console.log(mortgageCal5(200000, 0.05, 30, 750));
 
 
 // 🏡 Task 6: Loops
