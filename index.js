@@ -54,7 +54,7 @@ When your math is correct, monthlyRate will equal 1073.64
 If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly rate is 1073.64"
 */
 
-let mortgageCalculator = function() {
+const mortgageCalculator = function() {
     const name = 'Oscar'
     const principal = 200000;
     const interestRate = 0.05;
@@ -80,7 +80,7 @@ For example,
 mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 */
 
-let mortgageCal = function(P, I, N) {
+const mortgageCal = function(P, I, N) {
     const periods = N * 12;
     const monthlyInterestRate = I / 12;
     const n1 = Math.pow((1 + monthlyInterestRate), periods);
@@ -107,7 +107,7 @@ Similarly, to increase an interest rate by 5% you'd do monthlyRate * 1.05.
 */
 
 
-let mortgageCal5 = function(P, I, N, creditScore) {
+const mortgageCal5 = function(P, I, N, creditScore) {
 
      if(creditScore > 740) {
          var monthlyInterestRate = I * 0.95 / 12;
@@ -153,7 +153,7 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 
 console.log("---task 6---");
 
-let variableInterestRate = function (P, I, N) {
+const variableInterestRate = function (P, I, N) {
     for (let z = 0; z < 9; z++) {
         const name = "Joe";
         const periods = N * 12;
@@ -175,7 +175,7 @@ variableInterestRate(200000, 0.04, 30);
 /*  🏡 Add  `Property Tax`, `Homeowner's insurance` and `HOA fees` as parameters in your function 
 to calculate total monthly spending on housing */
 
-let mortgageCal7 = function (P, I, N, propertyTax, insurance, feeHOA) {
+const mortgageCal7 = function (P, I, N, propertyTax, insurance, feeHOA) {
     const periods = N * 12;
     const monthlyProperyTax = propertyTax / 12;
     const monthlyInsurance = insurance /12;
@@ -197,8 +197,14 @@ and returns the maximum loan that a person could afford */
 
 // C = P*[r(1 + r)^N]/[(1+r)^N - 1] => P = C *[(1 + r)^N -1] / [r (1 + r)^N]
 
+const loanCalculator = function (monthlyPayment, interestRate, years) {
+    const monthlyInterestRate = interestRate / 12;
+    const loan = monthlyPayment * [Math.pow((1 + monthlyInterestRate), (years*30)) - 1]/ [monthlyInterestRate *Math.pow((1 + monthlyInterestRate), (years*30))];
+    console.log(Math.round(loan));
+}
 
-
+console.log('---stretch two---')
+loanCalculator(800, 0.05, 30);
 
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
