@@ -209,6 +209,25 @@ loanCalculator(800, 0.05, 30);
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
 
+// loanCalculator(window.prompt(), 0.05, 30);
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates 
 (make sure to copy and paste as to not lose your work!) */
+
+const interestArr = [0.02,0.025,0.03,0.035,0.04,0.045,0.05,0.055,0.06];
+
+const variableInterestRate2 = function (P, I, N) {
+    for (let z = 0; z < 9; z++) {
+        const name = "Joe";
+        const periods = N * 12;
+        const monthlyInterestRate = I[z]/ 12;
+        const n1 = Math.pow((1 + monthlyInterestRate), periods);
+        const numerator = n1 * monthlyInterestRate;
+        const denominator = n1 - 1;
+        const monthlyRate = P * ( numerator / denominator);
+        console.log(name +`, with an interest rata of `+ I[z] +` your monthly rate is ` + Math.round(monthlyRate));
+    };
+}
+
+console.log('---stretch four---');
+variableInterestRate2(200000, interestArr, 30);
